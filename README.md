@@ -13,4 +13,4 @@ void MainWindow::changeEvent(QEvent *e)
     }
     QMainWindow::changeEvent(e);
 }
-···
+```
