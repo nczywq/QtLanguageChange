@@ -20,7 +20,5 @@ void MainWindow::retranslateUi()
 {
     setWindowTitle(QApplication::translate("MainWindow","翻译测试",nullptr));
     labelLanguage->setText(QApplication::translate("MainWindow","语言",nullptr));
-    comboboxLanguage->setItemText(0, QCoreApplication::translate("MainWindow", "中文", nullptr));
-    comboboxLanguage->setItemText(1, QCoreApplication::translate("MainWindow", "英文", nullptr));
 }
 ```
