@@ -22,3 +22,11 @@ void MainWindow::retranslateUi()
     labelLanguage->setText(QApplication::translate("MainWindow","语言",nullptr));
 }
 ```
+## 获取程序下language目录中的所有语言名字，以文件名为语言名字
+```C++
+QStringList languagelist = Language().getLanguagelist();
+```
+## 设置程序语言
+```C++
+Language().setLanguage(languagename);
+```
