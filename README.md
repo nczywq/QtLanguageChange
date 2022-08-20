@@ -1,6 +1,12 @@
 # QtLanguageChange
-Qt 语言切换方法
-窗体加上检测语言切换检测事件函数
+
+## Qt自动生成语言包方法qmake中添加如下代码，然后执行 工具-外部-Qt语言家-更新翻译,来生成需要翻译的语言包，用linguist来翻译，发布生成qm翻译文件,存放在language目录中
+```qmake
+TRANSLATIONS += Chinese.ts \
+                English.ts
+```
+## Qt 语言切换方法
+## 窗体加上检测语言切换检测事件函数
 ```C++
 void MainWindow::changeEvent(QEvent *e)
 {
