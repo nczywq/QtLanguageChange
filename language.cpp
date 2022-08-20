@@ -5,6 +5,20 @@ Language::Language()
 
 }
 
+QStringList Language::getLanguagelist()
+{
+    QDir dir(QApplication::applicationDirPath() + "/language/");
+    dir.setFilter(QDir::NoDotAndDotDot | QDir::AllEntries);
+    QStringList filelist = dir.entryList();
+    QStringList filterlist;
+    foreach(auto filename , filelist) {
+        if(filename.endsWith(".qm")) {
+            filterlist << filename.replace(".qm" , "");
+        }
+    }
+    return filterlist;
+}
+
 bool Language::setLanguage(QString lang)
 {
     qApp->removeTranslator(tran);
@@ -13,7 +27,7 @@ bool Language::setLanguage(QString lang)
     bool a1 = tran->load(QApplication::applicationDirPath() + "/language/" + lang + ".qm");
     bool a3 = qApp->installTranslator(tran);
     if(a1 && a3) {
-        qDebug() << "设置语言:" + lang;
+        qDebug() << "Set language: " + lang;
         return true ;
     }
     return false ;
