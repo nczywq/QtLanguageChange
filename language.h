@@ -6,10 +6,12 @@
 #include <QDebug>
 #include <QDir>
 
-class Language
+class Language :public QObject
 {
+    Q_OBJECT
 public:
-    explicit Language();
+    static QTranslator * SoftWareLanguage ;
+    explicit Language(QObject * parent = nullptr);
 
     ///
     /// \brief getLanguagelist  get all language
@@ -23,6 +25,7 @@ public:
     /// \return             return ture or false
     ///
     bool setLanguage(QString lang);
+private:
 };
 
 #endif // LANGUAGE_H
