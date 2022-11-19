@@ -1,6 +1,6 @@
 #include "language.h"
-QTranslator * tran = new QTranslator;
-Language::Language()
+QTranslator * Language::SoftWareLanguage = new QTranslator;
+Language::Language(QObject * parent) : QObject(parent)
 {
 
 }
@@ -16,18 +16,16 @@ QStringList Language::getLanguagelist()
             filterlist << filename.replace(".qm" , "");
         }
     }
+  //  qDebug() << filterlist;
     return filterlist;
 }
 
 bool Language::setLanguage(QString lang)
 {
-    qApp->removeTranslator(tran);
-    delete tran;
-    tran = new QTranslator;
-    bool a1 = tran->load(QApplication::applicationDirPath() + "/language/" + lang + ".qm");
-    bool a3 = qApp->installTranslator(tran);
+    bool a1 = SoftWareLanguage->load(QApplication::applicationDirPath() + "/language/" + lang + ".qm");
+    bool a3 = qApp->installTranslator(SoftWareLanguage);
     if(a1 && a3) {
-        qDebug() << "Set language: " + lang;
+        //qDebug() << "Set language: " + lang;
         return true ;
     }
     return false ;
